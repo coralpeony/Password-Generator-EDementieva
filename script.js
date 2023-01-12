@@ -127,11 +127,32 @@ var specialCharacters = [
   
   // Function for getting a random element from an array
   function getRandom(arr) {
-
+    var pool = getPasswordOptions();
+  
+    if (pool.length === 0) {
+      return alert("Please choose at least one type of characters!");
+    }
+  
+    var lengthOfPassword = prompt(
+      "How many characters would you like in your password? The length of password should be at least 10 characters but no more than 64."
+    );
+  
+    lengthOfPassword = parseInt(lengthOfPassword, 10);
+  
+    if (lengthOfPassword < 10 || lengthOfPassword > 65 || !lengthOfPassword) {
+      return alert("Please choose a password between 10 and 65 characters");
+    }
+  
+    var genAnswer = "";
+  
+    for (var i = 0; i < lengthOfPassword; i++) {
+      genAnswer += pool[Math.floor(Math.random() * pool.length)];
+    }
+  
+    return genAnswer;
   }
   
   // Function to generate password with user input
-  function generatePassword() {
 
   }
   
